@@ -2,7 +2,7 @@ from django.http import Http404
 from blogging.models import Post
 from django.views.generic import ListView, DetailView
 
-#Keeping old list_view for reference
+# Keeping old list_view for reference
 # def stub_view(request, *args, **kwargs):
 #     body = "Stub View\n\n"
 #     if args:
@@ -22,25 +22,32 @@ from django.views.generic import ListView, DetailView
 #     body = template.render(context)
 #     return HttpResponse(body, content_type="text/html")
 
+
 class PostListView(ListView):
     model = Post
-    queryset = Post.objects.exclude(published_date__exact=None).order_by('-published_date')
-    template_name = 'blogging/list.html'
+    queryset = Post.objects.exclude(published_date__exact=None).order_by(
+        "-published_date"
+    )
+    template_name = "blogging/list.html"
+
 
 class PostDetailView(DetailView):
     model = Post
-    queryset = Post.objects.exclude(published_date__exact=None).order_by('-published_date')
-    template_name = 'blogging/detail.html'
+    queryset = Post.objects.exclude(published_date__exact=None).order_by(
+        "-published_date"
+    )
+    template_name = "blogging/detail.html"
 
     def get_object(self, queryset=None):
         queryset = self.get_queryset()
-        post_id = self.kwargs.get('pk')
+        post_id = self.kwargs.get("pk")
         try:
             return queryset.get(pk=post_id)
         except Post.DoesNotExist:
             raise Http404("Post does not exist")
 
-#Leaving old code for reference
+
+# Leaving old code for reference
 # def list_view(request):
 #     published = Post.objects.exclude(published_date__exact=None)
 #     posts = published.order_by('-published_date')
