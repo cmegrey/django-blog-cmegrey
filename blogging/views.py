@@ -1,25 +1,19 @@
-from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect, Http404
-from django.template import loader
+from django.http import Http404
 from blogging.models import Post
 from django.views.generic import ListView, DetailView
 
-#HELP: Use querysets to filter out posts that have not been published in the list_view and detail_view functions. 
-#Pass parameter queryset to include the applicable filter that overwrites the default query.
-#Delete comment once implemented.
-
-# Create your views here.
-def stub_view(request, *args, **kwargs):
-    body = "Stub View\n\n"
-    if args:
-        body += "Args:\n"
-        body += "\n".join(["\t%s" % a for a in args])
-    if kwargs:
-        body += "Kwargs:\n"
-        body += "\n".join(["\t%s: %s" % i for i in kwargs.items()])
-    return HttpResponse(body, content_type="text/plain")
-
 #Keeping old list_view for reference
+# def stub_view(request, *args, **kwargs):
+#     body = "Stub View\n\n"
+#     if args:
+#         body += "Args:\n"
+#         body += "\n".join(["\t%s" % a for a in args])
+#     if kwargs:
+#         body += "Kwargs:\n"
+#         body += "\n".join(["\t%s: %s" % i for i in kwargs.items()])
+#     return HttpResponse(body, content_type="text/plain")
+
+
 # def list_view_old(request):
 #     published = Post.objects.exclude(published_date__exact=None)
 #     posts = published.order_by('-published_date')
