@@ -143,7 +143,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_URL = "/login/"
 LOGIN_REDIRECT_URL = "/"
 
-#Disabling for testing
+# Disabling for testing
 # SOCIALACCOUNT_PROVIDERS = {
 #     "github": {
 #         "APP": {
